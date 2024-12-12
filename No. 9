@@ -1,0 +1,193 @@
+importjava.util.Scanner;
+ //BANKCLASS
+ classBank{
+ publicstaticScannersc=newScanner(System.in); //creatingobjectofscannerclass
+ publicSavingsAccounta=newSavingsAccount(); //creatingobjectofSavingAccount
+ class
+ publicCustomerc=newCustomer(); //creatingobjectofCustomerclass
+ publicSavingsAccountcreateAccount(){ //methodtocreateanAccount
+ sc.nextLine();
+ System.out.print("Enteryourname:"); //printingonconsole
+ Stringcustomername=sc.nextLine(); //takingcustomernameasinputfromuser
+ c.setCustomerName(customername); //callingsetCustomerNamemethod
+ System.out.print("Enteryourage:"); //printingonconsole
+ intcustomerage=sc.nextInt(); //takingcustomerageasinputfromuser
+ if(customerage<18){//checkwhethertheageislessthan18
+ do{
+ System.out.print("Minimumageshouldbe18tocreateanaccount.\nPleaseenter
+ validage:");
+ customerage=sc.nextInt();
+ }while(customerage<18);//ifageislessthan18
+ }
+ c.setCustomerAge(customerage);//callingsetCustomerNamemethod
+ a.setCustomerObject(c);//callingsetCustomerNamemethod
+ System.out.print("EnteryouraccountId:"); //printingonconsole
+ intaccountid=sc.nextInt();//takingaccountidasinputfromuser
+ a.setAccountId(accountid);//callingsetAccountIdmethod
+ System.out.print("Enteryouraccounttype:"); //printingonconsole
+ Stringaccounttype=sc.next(); //takingaccounttypeasinputfromuser
+ a.setAccountType(accounttype);//callingsetAccountTypemethod
+ System.out.print("Enterbalance:"); //printingonconsole
+ doublebalance=sc.nextDouble();//takingbalanceasinputfromuser
+a.setBalance(balance);//callingsetBalancemethod
+ System.out.print("Enterminimumbalance:"); //printingonconsole
+ doubleminbalance=sc.nextDouble();//takingminbalanceasinputfromuser
+ a.setMinimumBalance(minbalance);//callingsetMinimumBalancemethod
+ returna; //returningsavingaccount
+ }
+ voidgetWithdrawAmount(){ //methodtowithdrawamount
+ System.out.print("Entertheamountyouwanttowithdraw:"); //printingonconsole
+ doubleamount=sc.nextDouble(); //takingamountasinputfromuser
+ if(amount>20000){//checkwhetheramountisgreaterthan20000
+ System.out.println("Withdrawalfailed.Maximumlimitofwithdrawalinone
+ transactionisRs.20000.");
+ }
+ else{ //ifamountislessthan20000
+ if(a.withdraw(amount)==true){//callingwithdrawmethod
+ System.out.println("Withdrawalsuccessful.Balanceis:"+a.getBalance());
+ }
+ else
+ System.out.println("Sorry!!!Notenoughbalance");//ifnotenoughbalance
+ }
+ }
+ publicvoiddepositAmount(doubleamount){//methodtodepositAmount
+ doublebal=a.getBalance()+amount; //previousbalance+amount
+ a.setBalance(bal); //callsetBalancemethod
+ System.out.println("Amountdepositedsuccessfully.Balanceis:"+a.getBalance());
+ }
+ publicvoidcheckBalance(){ //methodtocheckBalance
+ System.out.println("Balanceis:"+a.getBalance());//callinggetbalancemethod
+ }
+ publicvoiddisplayAccountInformation(){ //methodtodisplayAccountInformation
+ System.out.println("Welcome"+c.getCustomerName()+"!Followingareyouraccount
+ details:");
+ //displaynameofcustomer
+ System.out.println("Age:"+c.getCustomerAge());//displayAgeofcustomer
+ System.out.println("AccountId:"+a.getAccountId()); //displayAccountIdof
+ customer
+ System.out.println("AccountType:"+a.getAccountType());//displayAccountType
+ ofcustomer
+ System.out.println("Balance:"+a.getBalance()); //displayBalanceofcustomer
+ System.out.println("Minimumbalance:"+a.getMinimumBalance()); //display
+ Minimumbalanceofcustomer
+ }
+ }
+abstractclassAccount{//creatingabstractclassaccount
+ protecteddoublebalance;//declarationofbalance
+ protectedintaccountId; //declarationofaccountId
+ protectedStringaccountType;//declarationofaccountType
+ protectedCustomercustobj; //declarationofcustomerobj
+ voidsetBalance(doublebalance){
+ this.balance=balance; //settingvalueofbalance
+ }
+ doublegetBalance(){
+ returnbalance; //returningvalueofbalance
+ }
+ voidsetAccountId(intaccountId){
+ this.accountId=accountId; //settingvalueofbalance
+ }
+ intgetAccountId(){
+ returnaccountId;//returningvalueofaccountId
+ }
+ voidsetAccountType(StringaccountType){
+ this.accountType=accountType; //settingvalueofbalance
+ }
+ StringgetAccountType(){
+ returnaccountType; //returningvalueofaccountType
+ }
+ voidsetCustomerObject(Customercustobj){
+ this.custobj=custobj;//settingvalueofbalance
+ }
+ CustomergetCustomerObject(){
+ returncustobj; //returningvalueofcustobj
+ }
+ publicabstractbooleanwithdraw(doubleamount);//abstractmethodwithdraw
+ }
+ //SAVINGACCOUNTCLASS
+ classSavingsAccountextendsAccount{
+ //inheritingAccountclassinSavingAccount
+ privatedoubleminimumBalance; //declarationofminimumBalance
+ publicvoidsetMinimumBalance(doubleminimumBalance){
+ this.minimumBalance=minimumBalance; //settingminimumBalance
+ }
+ publicdoublegetMinimumBalance(){
+returnminimumBalance; //returningminimumBalance
+ }
+ publicbooleanwithdraw(doubleamount){
+ //methodtoreturntrueorfalse
+ if((balance-amount)>minimumBalance){
+ //checkwhetherwithdrawamountisgreaterthanminimumBalance
+ balance-=amount; //balanceminusamount
+ returntrue; //returningtrue
+ }
+ else
+ returnfalse;//returningfalse
+ }
+ }
+ //CUSTOMERCLASS
+ classCustomer{
+ privateStringcustomerName; //declarationofcustomerName
+ privateintcustomerAge; //declarationofcustomerAge
+ publicvoidsetCustomerName(StringcustomerName){
+ this.customerName=customerName; //settingvalueofcustomerName
+ }
+ publicStringgetCustomerName(){
+ returncustomerName; //returningvalueofcustomerName
+ }
+ publicvoidsetCustomerAge(intcustomerAge){
+ this.customerAge=customerAge;//settingvalueofcustomerAge
+ }
+ publicintgetCustomerAge(){
+ returncustomerAge; //returningvalueofcustomerAge
+ }
+ }
+ //MAINCLASS
+ publicclassMain{
+ publicstaticvoidmain(String[]args){
+ Scannersc=newScanner(System.in); //creatingobjectofscannerclass
+ SavingsAccounta;//crestingobjectofSavingsAccountclass
+ Bankbm=newBank();//crestingobjectofBankclass
+ do{
+ //menudrivenprogram
+ System.out.println("\n\t1.CreateAccount\n\t2.DisplayAccount\n\t3.Check
+ Balance"
+ +"\n\t4.DepositAmount\n\t5.WithdrawAmount\n\t6.Exit");
+ System.out.print("Enteryourchoice:"); //printingonconsole
+ intchoice=sc.nextInt(); //takinginputfromuser
+ System.out.println("");
+switch(choice) //switchcase
+ {
+ case1:
+ a=bm.createAccount(); //callingcreateAccountmethod
+ System.out.println("=================================================");
+ break;
+ case2:
+ bm.displayAccountInformation(); //callingdisplayAccountInformation
+ method
+ System.out.println("=================================================");
+ break;
+ case3:
+ bm.checkBalance(); //callingcheckBalancemethod
+ System.out.println("=================================================");
+ break;
+ case4:
+ System.out.print("Entertheamountyouwanttodeposit:");
+ doubleamount=sc.nextDouble();
+ bm.depositAmount(amount); //callingdepositAmountmethod
+ System.out.println("=================================================");
+ break;
+ case5:
+ bm.getWithdrawAmount(); //callinggetWithdrawAmountmethod
+ System.out.println("=================================================");
+ break;
+ case6:
+ System.out.println("=================================================");
+ return;//stopexecutionofprogram
+ default:
+ System.out.println("INVALIDINPUT!!");//printinginvalidinput
+ System.out.println("=================================================");
+ break;
+ }
+ }while(true);
+ }
+ }
