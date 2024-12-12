@@ -1,0 +1,30 @@
+ importjava.util.Scanner;
+ classExceptionHandlingExample{
+ publicstaticvoidmain(String[]args){
+ Scannerscanner=newScanner(System.in);
+ try{
+ //Inputtwonumbers
+ System.out.print("Enterthefirstnumber(Num1):");
+ Stringinput1=scanner.nextLine();
+ System.out.print("Enterthesecondnumber(Num2):");
+ Stringinput2=scanner.nextLine();
+ //Convertinputstointegers
+ intnum1=Integer.parseInt(input1);
+ intnum2=Integer.parseInt(input2);
+ //Performdivision
+ intresult=num1/num2;
+ System.out.println("Resultofdivision:"+result);
+ //ExampleofArrayIndexOutOfBoundsException
+ int[]array=newint[1];
+ System.out.println("Accessingarrayelement:"+array[2]); //Thiswill throw
+ ArrayIndexOutOfBoundsException
+ }catch(NumberFormatExceptione){
+ System.out.println("Error: Invalid number format. Please enter valid
+ integers.");
+ }catch(ArithmeticExceptione){
+ System.out.println("Error:Divisionbyzeroisnotallowed.");
+ }catch(ArrayIndexOutOfBoundsExceptione){
+ System.out.println("Error:Arrayindexoutofbounds.");
+ }
+ }
+ }
