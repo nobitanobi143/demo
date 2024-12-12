@@ -1,76 +1,125 @@
- classEmployee{
- Stringname,add,mail;
- intmobile;
- floatid,basic;
- void salary(){
- floatda,hra,pf,cf,gross;
- da=97/100*basic;
- hra=10/100*basic;
- pf=12/100*basic;
- cf=basic*0.1f/100;
- gross=basic+da+hra-pf-cf;
- System.out.println("Name:"+name);
- System.out.println("Address:"+add);
- System.out.println("E_mail:"+mail);
- System.out.println("Mobile:"+mobile);
- System.out.println("Emp_id:"+id);
- System.out.println("Basicsalary:"+basic);
- System.out.println("Grosssalary:"+gross);
- }
- }
- classProManextendsEmployee{
- ProMan(Stringname,Stringadd,Stringmail,intmobile,floatid,intsal){
- System.out.println("--ProjectManagerSalarySlip--");
- this.name=name;
- this.add=add;
- this.mail=mail;
- this.mobile=mobile;
- this.id=id;
- basic=sal;
- }
- }
- classAPMextendsEmployee{
- APM(Stringname,Stringadd,Stringmail,intmobile,floatid,intsal){
- System.out.println("--AssistantProjectManagerSalarySlip--");
- this.name=name;
- this.add=add;
- this.mail=mail;
- this.mobile=mobile;
- this.id=id;
- basic=sal;
- }
- }
- classTeamLeadextendsEmployee{
-TeamLead(Stringname,Stringadd,Stringmail,intmobile,floatid,intsal){
- System.out.println("--TeamLeaderSalarySlip--");
- this.name=name;
- this.add=add;
- this.mail=mail;
- this.mobile=mobile;
- this.id=id;
- basic=sal;
- }
- }
- classprogrammerextendsEmployee{
- programmer(Stringname,Stringadd,Stringmail,intmobile,floatid,intsal){
- System.out.println("--ProgrammerSalarySlip--");
- this.name=name;
- this.add=add;
- this.mail=mail;
- this.mobile=mobile;
- this.id=id;
- basic=sal;
- }
- }
- classInheritance{
- publicstaticvoidmain(String[]args){
- ProManp=newProMan("AmanKale","Pune","asd@gmail.com",1234567891,101,60000);
- p.salary();
- APMa=newAPM("AmarDate","Pune","ertd@gmail.com",321456987,102,50000);
- a.salary();
- TeamLeadt=newTeamLead("RamRane","Mumbai","trya23@gmail.com",456789123,104,45000);
- t.salary();
- programmerr=newprogrammer("RadhaMane","Mumbai","yugfc67@gmail.com",894561236,104,55000);
- r.salary();
- }
- }
+import java.util.*;
+abstract class shape
+{
+    double val1,val2;
+    void input()
+    {
+        Scanner s=new Scanner(System.in);
+        System.out.println("Enter the first value");
+        val1=s.nextDouble();
+        System.out.println("Enter the second value");
+        val2=s.nextDouble();
+    }
+    abstract void compute_area();
+}
+class Triangle extends shape
+{
+    void compute_area()
+    { class Employee{
+        String name,add,mail;
+        int mobile;
+        float id,basic;
+        void salary(){
+            float da,hra,pf,cf,gross;
+            da=97/100*basic;
+            hra=10/100*basic;
+            pf=12/100*basic;
+            cf=basic*0.1f/100;
+            gross=basic+da+hra-pf-cf;
+            System.out.println("Name:"+name);
+            System.out.println("Address:"+add);
+            System.out.println("E_mail:"+mail);
+            System.out.println("Mobile:"+mobile);
+            System.out.println("Emp_id:"+id);
+            System.out.println("Basicsalary:"+basic);
+            System.out.println("Grosssalary:"+gross);
+        }
+    }
+        class ProMan extends Employee{
+        ProMan(String name,String add,String mail,int mobile,float id,int sal){
+            System.out.println("--Project Manager Salary Slip--");
+            this.name=name;
+            this.add=add;
+            this.mail=mail;
+            this.mobile=mobile;
+            this.id=id;
+            basic=sal;
+        }
+    }
+        class APM extends Employee{
+        APM(String name,String add,String mail,int mobile,float id,int sal){
+            System.out.println("--Assistant Project Manager Salary Slip--");
+            this.name=name;
+            this.add=add;
+            this.mail=mail;
+            this.mobile=mobile;
+            this.id=id;
+            basic=sal;
+        }
+    }
+        class TeamLead extends Employee{
+        TeamLead(String name,String add,String mail,int mobile,float id,int sal){
+            System.out.println("--Team Leader Salary Slip--");
+            this.name=name;
+            this.add=add;
+            this.mail=mail;
+            this.mobile=mobile;
+            this.id=id;
+            basic=sal;
+        }
+    }
+        class programmer extends Employee {
+            programmer(String name, String add, String mail, int mobile, float id, int sal) {
+                System.out.println("--Programmer Salary Slip--");
+                this.name = name;
+                this.add = add;
+                this.mail = mail;
+                this.mobile = mobile;
+                this.id = id;
+                basic = sal;
+            }
+
+    }
+        class Inheritance{
+        public static void main(String[]args){
+            ProMan p=new ProMan("AmanKale","Pune","asd@gmail.com",1234567891,101,60000);
+            p.salary();
+            APM a=new APM("AmarDate","Pune","ertd@gmail.com",321456987,102,50000);
+            a.salary();
+            TeamLead t=new TeamLead("RamRane","Mumbai","trya23@gmail.com",456789123,104,45000);
+            t.salary();
+            programmer r=new programmer("RadhaMane","Mumbai","yugfc67@gmail.com",894561236,104,55000);
+            r.salary();
+        }
+    }
+        double area;
+        area=0.5*val1*val2;
+        System.out.println("--Calculate Traingle Area--");
+        System.out.println("Traingle area:"+area);
+    }
+}
+class Rectangle extends shape
+{
+    void compute_area()
+    {
+        double area;
+        area=val1*val2;
+        System.out.println("--Calculate Rectangle Area--");
+        System.out.println("Rectangle area"+area);
+    }
+}
+class Dynamic
+{
+    public static void main(String[]args)
+    {
+        shape s;
+        Triangle t=new Triangle();
+        Rectangle r=new Rectangle();
+        s=t;
+        s.input();
+        s.compute_area();
+        s=r;
+        s.input();
+        s.compute_area();
+    }
+}
